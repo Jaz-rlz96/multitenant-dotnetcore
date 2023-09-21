@@ -1,0 +1,41 @@
+﻿@using SampleMvcApp.ViewModels
+@model Auth0TokenResponse
+
+@{
+    ViewData["Title"] = "Auth0 Token Response";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+
+        <div class="col-md-4">
+            <h3>Access Token</h3>
+            <div id="token-container">
+                @Model.AccessToken
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Token Type</h3>
+            <div>
+                @Model.TokenType
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Expires In</h3>
+            <div>
+                @Model.ExpiresIn
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    #token-container {
+        overflow: auto;
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
