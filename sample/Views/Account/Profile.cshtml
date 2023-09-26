@@ -1,0 +1,33 @@
+﻿@using SampleMvcApp.ViewModels
+@using System.Security.Claims
+@model List<ClaimViewModel>
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <h2>@ViewData["Title"].</h2>
+
+            <div class="col-md-2">
+                <img src="@Model.FirstOrDefault(c => c.Type == "picture")?.Value"
+                     alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-md-4">
+                <h3>@User.Identity.Name</h3>
+                <p>
+                     @Model.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
+                </p>
+            </div>
+        </div>
+
+        <h4>User Claims:</h4>
+        <ul>
+            @foreach (var claim in Model)
+            {
+                <li><strong>@claim.Type:</strong> @claim.Value</li>
+            }
+        </ul>
+    </div>
+</div>

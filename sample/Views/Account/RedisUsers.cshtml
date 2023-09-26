@@ -1,0 +1,24 @@
+﻿@using SampleMvcApp.ViewModels;
+@model UserViewModelRedis
+
+<h1>Users from Redis</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.ID</td>
+                <td>@user.Name</td>
+                <td>@user.Age</td>
+            </tr>
+        }
+    </tbody>
+</table>
