@@ -1,12 +1,9 @@
 ﻿@page "{orgId?}"
 @model SampleMvcApp.ViewModels.UserPageModel
-@{
-    ViewData["Title"] = "User Profile";
-}
 
 <h1>User Profiles</h1>
 
-@if (Model.Users != null)
+@if (Model != null && Model.Users != null)
 {
     <table class="table">
         <thead>

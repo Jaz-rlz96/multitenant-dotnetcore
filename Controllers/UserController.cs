@@ -23,12 +23,11 @@ namespace SampleMvcApp.Controllers
             try
             {
                 model.Users = await _Auth0ManagementApiService.ShowOrganizationUsers(orgId);
-                return View(model);
+                return View("~/Views/Auth0/User.cshtml", model);
             }
             catch (Exception ex)
             {
-                model.ErrorMessage = "An error occurred while fetching user list. Error: " + ex.Message;
-                return View(model);
+                return StatusCode(500, ex.Message);
             }
         }
 

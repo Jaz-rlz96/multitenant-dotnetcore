@@ -16,8 +16,7 @@ namespace SampleMvcApp.Controllers
         {
             var authenticationProperties = new AuthenticationProperties
             {
-                RedirectUri = returnUrl,
-                Items = { { "organization", "org_5Wj7TFNxJwwDF3SR" } }
+                RedirectUri = returnUrl
             };
 
             await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
@@ -28,8 +27,7 @@ namespace SampleMvcApp.Controllers
         {
             var authenticationProperties = new AuthenticationProperties
             {
-                RedirectUri = Url.Action("Index", "Home"),
-                Items = { { "organization", "org_5Wj7TFNxJwwDF3SR" } }
+                RedirectUri = Url.Action("Index", "Home")
             };
 
             await HttpContext.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);

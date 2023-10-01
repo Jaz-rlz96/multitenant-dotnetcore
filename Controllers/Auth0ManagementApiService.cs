@@ -5,7 +5,6 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SampleMvcApp.ViewModels;
-using SampleMvcApp.ViewModels.SampleMvcApp.ViewModels;
 
 namespace SampleMvcApp.Controllers
 {
@@ -17,7 +16,6 @@ namespace SampleMvcApp.Controllers
 
         public Auth0ManagementApiService(HttpClient httpClient, string auth0Domain, string accessToken)
         {
-            auth0Domain = "dev-ea5oepbc2k553fws.us.auth0.com";
             _httpClient = httpClient;
             _auth0Domain = auth0Domain;
             _accessToken = accessToken;
@@ -51,7 +49,7 @@ namespace SampleMvcApp.Controllers
         }
 
 
-        public async Task<IEnumerable<User>> ShowOrganizationUsers(string orgId)
+        public async Task<List<UserResponse>> ShowOrganizationUsers(string orgId)
         {
             var endpoint = $"organizations/{orgId}/members";
             var response = await _httpClient.GetAsync(endpoint);
@@ -62,7 +60,7 @@ namespace SampleMvcApp.Controllers
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            var users = JsonConvert.DeserializeObject<IEnumerable<User>>(content);
+            var users = JsonConvert.DeserializeObject<List<UserResponse>>(content);
             return users;
         }
     }

@@ -1,5 +1,4 @@
 ﻿using SampleMvcApp.Controllers;
-using SampleMvcApp.ViewModels.SampleMvcApp.ViewModels;
 using System.Collections.Generic;
 
 namespace SampleMvcApp.ViewModels
